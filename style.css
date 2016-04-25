@@ -1,0 +1,30 @@
+#canvas {
+    border: 1px solid black;
+}
+
+#log {
+    height: 300px;
+    overflow: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.instructions {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.right-panel {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.street {
+    color: black;
+}
