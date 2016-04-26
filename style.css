@@ -5,8 +5,9 @@ body {
 }
 
 #wrapper {
-    overflow: auto; 
+    
     margin-top: 30px;
+    position: absolute;
 }
 #canvas {
     border: 2px solid #F2F1DF;
@@ -115,6 +116,29 @@ h3 {
     font-weight:600;
     margin-bottom: 2px;
     border-radius: 5px;
+}
+
+#ThankYouNote {
+    
+    width: 400px;
+
+    left: 250px;
+    top: 250px;
+    position: relative;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: "Avenir Next", sans-serif;
+   background-color: #F27272;
+    // background-color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 3px solid;
+    border-color: #F27272;
+    color: white;
+    border-radius: 1px;
+    display: none;
+    
 }
     
     
