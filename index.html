@@ -9,44 +9,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.0/jquery-migrate.min.js"></script>
     <script src="main.js"></script>
-    <!-- Bootstrap stuff -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
 <body>
-    <h1>This is the title</h1>
-    <button id="zoomIn">Zoom In</button>
-    <button id="zoomOut">Zoom out</button>
-    <div class="row">
-        <div class="col-md-9 left-panel">
-            <canvas id="canvas" width="900" height="600"></canvas>
+    <div id="metroTag">metro<span id="tag-word">Tag</span></div>
+   
+    <div id="wrapper">
+        <div id="left-panel">
+             <button id="zoomIn">+</button>
+    <button id="zoomOut">-</button>
+            <canvas id="canvas" width="900" height="550"></canvas>
         </div>
-        <div class="col-md-3 right-panel">
-            <h2>Tag a Street</h2>
+        <div id="right-panel">
+            <h2>Help Tag a Street</h2>
             <div class="instructions">
-                For any untagged street on the image, click on the name of the street and type the name here as you see it on the image.</div>
+                For any untagged street on the image, click on the name of the street. Type the name here as you see it on the image.</div>
             <br>
             <!--<form name="data-form" action="counter.php" method="post">-->
-            <button>
-                <b>Street name:</b>
+          
+                <b><span class="labels">Street name: </span></b>
                 <br>
-                <input type="text" class="street" id="streetname" placeholder="e.g. Forbes Ave.">
-                <br>
-                <br>
-                <b>Comments:</b>
-                <br>
-                <textarea id="comments" rows="5" cols="30" placeholder="e.g. Half of the street name was cut off..."></textarea>
-                <input type="submit" id="submitbutton" value="Submit Tag">
+                <input type="text" id="streetname" placeholder="e.g. Forbes Ave.">
                 <br>
                 <br>
-                <input type="submit" value="All streets are tagged.">
+                <b><span class="labels">Comments:<span class="label"></b>
+                <br>
+                <textarea id="comments" rows="6" cols="30" placeholder="e.g. Half of the street name was cut off."></textarea>
+                <input type="button" id="submitbutton" value="Submit Tag">
                 <br>
                 <br>
-                <input type="submit" value="I want to stop tagging.">
-            </button>
+                <input type="button" id="allStreetsTagged" value="All streets are tagged.">
+                <br>
+                <br>
+                <input type="button" id="stopTagging" value="I want to stop tagging.">
+            
         </div>
     </div>
     <div id="log"></div>
