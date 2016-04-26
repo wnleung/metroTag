@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     var canvasPos = { "deltaX": 0, "deltaY": 0 };
 
-    var initialImageWidth = 500;
+    var initialImageWidth = orig_canvas_width;
     var newImageHeight = 0;
 
     var image_height, image_width;
@@ -32,10 +32,11 @@ $(document).ready(function() {
     var currentY = 0;
 
     //For the tags
-    ctx.font = "20px Arial";
+    ctx.font = "13px Avenir Next";
     var currentTagX; //X of clicked position for a tag
     var currentTagY; //Y of clicked position for a tag
     var boxtagwidth = 10; // Size of box to draw
+    var textspace = 5; //space between box and text
 
     //For sending to server
     var group_key = "ireneAV52pnKP6KbS7"
@@ -57,7 +58,7 @@ $(document).ready(function() {
         ctx.drawImage(img, 0, 0, initialImageWidth, newImageHeight);
     }
 
-    img.src = "map.png";
+    img.src = "map-sample.jpg";
 
     // our event object that handled clicking (mousedown), mousemove (dragging), mouseup (enddragging)
     var events = {
@@ -87,7 +88,8 @@ $(document).ready(function() {
 
             console.log("CurX: " + currentX + " - CurY: " + currentY);
             console.log("Current scale " + currentScale + " \nX: " + x + " AND Y: " + y);
-            ctx.fillRect(x, y, boxtagwidth, boxtagwidth);
+            ctx.fillStyle="#f5f5f5"
+            ctx.fillRect(x , y , boxtagwidth, boxtagwidth);
             currentTagX = x - currentX;
             currentTagY = y - currentY;
             console.log("CurTagX: " + currentTagX + " - CurTagY: " + currentTagY);
@@ -168,16 +170,18 @@ $(document).ready(function() {
 
     function drawTags() {
         for (var i = 0; i < tags.length; i++) {
-            ctx.fillRect(tags[i].x, tags[i].y, boxtagwidth, boxtagwidth);
-            ctx.fillText(tags[i].text, tags[i].x, tags[i].y);
+            ctx.fillStyle="#f5f5f5"
+            ctx.fillRect(tags[i].x, tags[i].y , boxtagwidth, boxtagwidth);
+            ctx.fillText(tags[i].text, tags[i].x, tags[i].y -textspace);
         }
 
     }
 
     function drawTagsMove(canvasx, canvasy) {
         for (var i = 0; i < tags.length; i++) {
+            ctx.fillStyle="#f5f5f5"
             ctx.fillRect(tags[i].x + canvasx, tags[i].y + canvasy, boxtagwidth, boxtagwidth);
-            ctx.fillText(tags[i].text, tags[i].x + canvasx, tags[i].y + canvasy);
+            ctx.fillText(tags[i].text, tags[i].x + canvasx, tags[i].y + canvasy - textspace);
         }
 
     }
@@ -192,7 +196,7 @@ $(document).ready(function() {
         // console.log(currentTagY);
         var name = $('#streetname').val();
         var comment = $('#comments').val();
-        ctx.fillText(name, currentTagX + currentX, currentTagY + currentY);
+        ctx.fillText(name, currentTagX + currentX, currentTagY + currentY - textspace);
         console.log("PLACING TEXT AT: " + (currentTagX + currentX) + " AND " + (currentTagY + currentY));
 
         //Creating a new tag whose location is based off of the origin of the picture
@@ -201,6 +205,18 @@ $(document).ready(function() {
         console.log(tags);
 
         sendTagServer(newtag) ;
+    });
+    
+     $("#allStreetsTagged").click(function() {
+         
+         $("#ThankYouNote").fadeIn( "slow");
+        
+    });
+    
+    $("#stopTagging").click(function() {
+         
+         $("#ThankYouNote").fadeIn( "slow");
+        
     });
 
     //IN case we use form prevent default behavior which is to submit a window
