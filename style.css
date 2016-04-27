@@ -95,7 +95,7 @@ h3 {
     margin-bottom: 10px;
 }
 
-#submitbutton, #allStreetsTagged, #stopTagging {
+.right-panel-button {
     color: #344059;
     font-size: 15px;
     width: 180px;
@@ -105,6 +105,20 @@ h3 {
     border-radius: 5px;
       
 }
+
+
+#submitbutton {
+    background-color: #C9DBF2;
+}
+
+#allStreetsTagged {
+    background-color: #d2ffd2;
+}
+
+#stopTagging {
+    background-color: #ffd2c8;
+}
+
 
 #zoomIn, #zoomOut {
     font-size: 20px;

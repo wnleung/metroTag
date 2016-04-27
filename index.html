@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
     <title>Metro Tag</title>
-    <!--- Jquery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.0/jquery-migrate.min.js"></script>
-    <script src="main.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
@@ -37,13 +36,14 @@
                 <b><span class="labels">Comments:<span class="label"></b>
                 <br>
                 <textarea id="comments" rows="6" cols="30" placeholder="e.g. Half of the street name was cut off."></textarea>
-                <input type="button" id="submitbutton" value="Submit Tag">
+                <input type="button" class="right-panel-button" id="submitbutton" value="Submit Tag">
                 <br>
                 <br>
-                <input type="button" id="allStreetsTagged" value="All streets are tagged.">
+                <input type="button" class="right-panel-button" id="allStreetsTagged" value="All streets are tagged.">
                 <br>
                 <br>
-                <input type="button" id="stopTagging" value="I want to stop tagging.">
+                <input type="button" class="right-panel-button" id="stopTagging" value="I want to stop tagging.">
+                
             
         </div>
     </div>
@@ -53,5 +53,8 @@
     </div>        
     <div id="log"></div>
 </body>
-
+    <!--- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.0/jquery-migrate.min.js"></script>
+    <script src="main.js"></script>
 </html>
