@@ -39,7 +39,7 @@ $(document).ready(function() {
     var textspace = 5; //space between box and text
 
     //For sending to server
-    var group_key = "ireneAV52pnKP6KbS7"
+    var group_key = "ireneAV52pnKP6KbS78"
     var my_id = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     //Load the image
