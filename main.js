@@ -172,7 +172,7 @@ $(document).ready(function() {
 
     function drawTags() {
         for (var i = 0; i < tags.length; i++) {
-            ctx.fillStyle = "#f5f5f5"
+            ctx.fillStyle = "#f5f5f5";
             ctx.fillRect(tags[i].x, tags[i].y, boxtagwidth, boxtagwidth);
             ctx.fillText(tags[i].text, tags[i].x, tags[i].y - textspace);
         }
