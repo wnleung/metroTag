@@ -238,8 +238,8 @@ $(document).ready(function() {
         var data = { id: my_id, all_tags: tags };
 
         $.ajax({
-            //url: "https://codingthecrowd.com/counter.php",
-            url: "http://localhost:8000/counter.php",
+            url: "https://codingthecrowd.com/counter.php",
+            //url: "http://localhost:8000/counter.php",
 
             dataType: "jsonp",
             data: {
@@ -318,8 +318,8 @@ $(document).ready(function() {
         var data = { id: my_id, all_tags: tags, new_tag: newtag };
 
         $.ajax({
-            //url: "https://codingthecrowd.com/counter.php",
-            url: "http://localhost:8000/counter.php",
+            url: "https://codingthecrowd.com/counter.php",
+            //url: "http://localhost:8000/counter.php",
 
             dataType: "jsonp",
             data: {
