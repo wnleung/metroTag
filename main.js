@@ -198,6 +198,7 @@ $(document).ready(function() {
         // console.log(currentTagY);
         var name = $('#streetname').val();
         var comment = $('#comments').val();
+        ctx.fillStyle = "#f5f5f5";
         ctx.fillText(name, currentTagX + currentX, currentTagY + currentY - textspace);
         // console.log("PLACING TEXT AT: " + (currentTagX + currentX) + " AND " + (currentTagY + currentY));
 
@@ -288,6 +289,7 @@ $(document).ready(function() {
 
             //if map has no tags, then load the new tag
             if(tags.length == 0) {
+                ctx.fillStyle = "#f5f5f5";
                 ctx.fillText(temptag.text, temptag.x, temptag.y);
                 tags.push(temptag) ;
                 break ;
@@ -304,6 +306,7 @@ $(document).ready(function() {
             //if tag NOT in tag array them add
             if(found == false) {
                 console.log("adding a new tag!") ;
+                ctx.fillStyle = "#f5f5f5";
                 ctx.fillRect(temptag.x, temptag.y, boxtagwidth, boxtagwidth);
                 ctx.fillText(temptag.text, temptag.x, temptag.y);
                 tags.push(temptag) ;
