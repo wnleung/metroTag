@@ -40,6 +40,7 @@ $(document).ready(function() {
 
     //For sending to server
     var group_key = "ireneAV52pnKP6KbS7"
+    var my_id = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
     //Load the image
     var img;
@@ -59,6 +60,7 @@ $(document).ready(function() {
     }
 
     img.src = "map-sample.jpg";
+    update_interval = setInterval(pullData, 1000);
 
     // our event object that handled clicking (mousedown), mousemove (dragging), mouseup (enddragging)
     var events = {
@@ -67,8 +69,8 @@ $(document).ready(function() {
         mouseX: 0,
         mouseY: 0,
         mouseDown: function(e) {
-            console.log("\n\nON A MOUSE DOWN")
-                //Redraw canvas on each click
+            // console.log("\n\nON A MOUSE DOWN")
+            //Redraw canvas on each click
             ctx.clearRect(0, 0, orig_canvas_width, orig_canvas_height);
             canvasPos.deltaX = currentX;
             canvasPos.deltaY = currentY;
@@ -78,21 +80,21 @@ $(document).ready(function() {
 
             // get the current mouse position (DRAGSTART)
             var r = canvas.getBoundingClientRect();
-            console.log("mouse is at left: " + r.left + " and - r.top: " + r.top);
-            console.log("clientX: " + e.clientX + " and - clientY: " + e.clientY);
-            console.log("canvas pos X: " + canvasPos.deltaX + " canvas pos Y: " + canvasPos.deltaY);
-            console.log('\n\n');
+            // console.log("mouse is at left: " + r.left + " and - r.top: " + r.top);
+            // console.log("clientX: " + e.clientX + " and - clientY: " + e.clientY);
+            // console.log("canvas pos X: " + canvasPos.deltaX + " canvas pos Y: " + canvasPos.deltaY);
+            // console.log('\n\n');
 
             var x = (e.clientX - r.left) * currentScale;
             var y = (e.clientY - r.top) * currentScale;
 
-            console.log("CurX: " + currentX + " - CurY: " + currentY);
-            console.log("Current scale " + currentScale + " \nX: " + x + " AND Y: " + y);
-            ctx.fillStyle="#f5f5f5"
-            ctx.fillRect(x , y , boxtagwidth, boxtagwidth);
+            // console.log("CurX: " + currentX + " - CurY: " + currentY);
+            // console.log("Current scale " + currentScale + " \nX: " + x + " AND Y: " + y);
+            ctx.fillStyle = "#f5f5f5"
+            ctx.fillRect(x, y, boxtagwidth, boxtagwidth);
             currentTagX = x - currentX;
             currentTagY = y - currentY;
-            console.log("CurTagX: " + currentTagX + " - CurTagY: " + currentTagY);
+            // console.log("CurTagX: " + currentTagX + " - CurTagY: " + currentTagY);
 
             events.dragging = true;
 
@@ -100,8 +102,8 @@ $(document).ready(function() {
 
         mouseMove: function(e) {
             if (events.dragging) {
-                console.log("\n\nON A MOUSE MOVE")
-                    // get the current mouse position (updates every time the mouse is moved durring dragging)
+                // console.log("\n\nON A MOUSE MOVE")
+                // get the current mouse position (updates every time the mouse is moved durring dragging)
                 var r = canvas.getBoundingClientRect();
                 var x = (e.clientX - r.left) * currentScale;
                 var y = (e.clientY - r.top) * currentScale;
@@ -144,7 +146,7 @@ $(document).ready(function() {
         orig_canvas_height = orig_canvas_height / 2;
 
         currentScale = currentScale / 2;
-        console.log("Current scale: " + currentScale);
+        // console.log("Current scale: " + currentScale);
 
         currentX = 0;
         currentY = 0;
@@ -162,7 +164,7 @@ $(document).ready(function() {
         orig_canvas_height = orig_canvas_height * 2;
 
         currentScale = currentScale * 2;
-        console.log("Current scale: " + currentScale);
+        // console.log("Current scale: " + currentScale);
 
         currentX = 0;
         currentY = 0;
@@ -170,16 +172,16 @@ $(document).ready(function() {
 
     function drawTags() {
         for (var i = 0; i < tags.length; i++) {
-            ctx.fillStyle="#f5f5f5"
-            ctx.fillRect(tags[i].x, tags[i].y , boxtagwidth, boxtagwidth);
-            ctx.fillText(tags[i].text, tags[i].x, tags[i].y -textspace);
+            ctx.fillStyle = "#f5f5f5"
+            ctx.fillRect(tags[i].x, tags[i].y, boxtagwidth, boxtagwidth);
+            ctx.fillText(tags[i].text, tags[i].x, tags[i].y - textspace);
         }
 
     }
 
     function drawTagsMove(canvasx, canvasy) {
         for (var i = 0; i < tags.length; i++) {
-            ctx.fillStyle="#f5f5f5"
+            ctx.fillStyle = "#f5f5f5"
             ctx.fillRect(tags[i].x + canvasx, tags[i].y + canvasy, boxtagwidth, boxtagwidth);
             ctx.fillText(tags[i].text, tags[i].x + canvasx, tags[i].y + canvasy - textspace);
         }
@@ -197,26 +199,26 @@ $(document).ready(function() {
         var name = $('#streetname').val();
         var comment = $('#comments').val();
         ctx.fillText(name, currentTagX + currentX, currentTagY + currentY - textspace);
-        console.log("PLACING TEXT AT: " + (currentTagX + currentX) + " AND " + (currentTagY + currentY));
+        // console.log("PLACING TEXT AT: " + (currentTagX + currentX) + " AND " + (currentTagY + currentY));
 
         //Creating a new tag whose location is based off of the origin of the picture
         var newtag = new Tag(name, comment, currentTagX, currentTagY);
         tags.push(newtag); //Pushing it into our tag array
-        console.log(tags);
+        // console.log(tags);
 
-        sendTagServer(newtag) ;
+        sendTagServer(newtag);
     });
-    
-     $("#allStreetsTagged").click(function() {
-         
-         $("#ThankYouNote").fadeIn( "slow");
-        
+
+    $("#allStreetsTagged").click(function() {
+
+        $("#ThankYouNote").fadeIn("slow");
+
     });
-    
+
     $("#stopTagging").click(function() {
-         
-         $("#ThankYouNote").fadeIn( "slow");
-        
+
+        $("#ThankYouNote").fadeIn("slow");
+
     });
 
     //IN case we use form prevent default behavior which is to submit a window
@@ -224,19 +226,20 @@ $(document).ready(function() {
     $("#submitbutton").submit(function(e) {
         e.preventDefault();
         console.log(currentTagX) ;
-    	console.log(currentTagY) ;
-    	var name = $('#comments') ;
-    	console.log(name.val()) ;
-    	console.log(name.text) ;
+        console.log(currentTagY) ;
+        var name = $('#comments') ;
+        console.log(name.val()) ;
+        console.log(name.text) ;
     });
     */
 
-    //Function to send to server every time a new tag is added
-    function sendTagServer(newtag) {
-        var data = { new_tag: newtag, all_tags: tags };
+    //Pull most recent data from server
+    function pullData() {
+        var data = { id: my_id, all_tags: tags };
 
         $.ajax({
-            url: "https://codingthecrowd.com/counter.php",
+            //url: "https://codingthecrowd.com/counter.php",
+            url: "http://localhost:8000/counter.php",
 
             dataType: "jsonp",
             data: {
@@ -245,11 +248,130 @@ $(document).ready(function() {
             },
 
             success: function(response) {
-                console.log(response) ;
+                console.log(response);
+
+                process_data_pull(response);
             },
             error: function(response) {
                 console.log(response);
             }
         });
     }
+
+    //Called every second to call new refresh data from server
+    function process_data_pull(response) {
+        var count = response.count;
+        var array = response.results;
+
+        for (var i = 0; i < count; i++) {
+            var temp = array[i];
+
+            var data = JSON.parse(temp.data);
+            var id = data.id;
+
+            if (my_id != id) {
+                compare_and_add_tags(data.all_tags);
+            }
+        }
+    }
+
+    //Compares data stored in server to existing tag
+    //Crude comparison for now
+    //Ugh, this is n^3 --> optimize?
+    function compare_and_add_tags(newtags) {
+        console.log(newtags);
+        var count = newtags.length;
+
+        for (var i = 0; i < count; i++) {
+            var temptag = new Tag(newtags[i].text, newtags[i].comment, newtags[i].x, newtags[i].y);
+            var found = false ;
+
+            //if map has no tags, then load the new tag
+            if(tags.length == 0) {
+                ctx.fillText(temptag.text, temptag.x, temptag.y);
+                tags.push(temptag) ;
+                break ;
+            }
+
+            //compare new tag to whats in local version of truth
+            for (var j = 0 ; j < tags.length ; j++) {
+                if(isEquivalent(temptag, tags[j])) {
+                    found = true ;
+                    break ;
+                }
+            }
+
+            //if tag NOT in tag array them add
+            if(found == false) {
+                console.log("adding a new tag!") ;
+                ctx.fillRect(temptag.x, temptag.y, boxtagwidth, boxtagwidth);
+                ctx.fillText(temptag.text, temptag.x, temptag.y);
+                tags.push(temptag) ;
+            }
+
+
+        }
+    }
+
+    //Function to send to server every time a new tag is added
+    function sendTagServer(newtag) {
+        var data = { id: my_id, all_tags: tags, new_tag: newtag };
+
+        $.ajax({
+            //url: "https://codingthecrowd.com/counter.php",
+            url: "http://localhost:8000/counter.php",
+
+            dataType: "jsonp",
+            data: {
+                key: group_key,
+                data: JSON.stringify(data)
+            },
+
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+    /* randomString()
+     * Used to create random game ID
+     */
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
+
+    function isEquivalent(a, b) {
+        console.log("\n\nCOMPARING:") ;
+         console.log(a) ;
+        console.log(b) ;
+        // Create arrays of property names
+        var aProps = Object.getOwnPropertyNames(a);
+        var bProps = Object.getOwnPropertyNames(b);
+
+        // If number of properties is different,
+        // objects are not equivalent
+        if (aProps.length != bProps.length) {
+            return false;
+        }
+
+        for (var i = 0; i < aProps.length; i++) {
+            var propName = aProps[i];
+
+            // If values of same property are not equal,
+            // objects are not equivalent
+            if (a[propName] !== b[propName]) {
+                return false;
+            }
+        }
+
+        // If we made it this far, objects
+        // are considered equivalent
+        return true;
+    }
+
 });
