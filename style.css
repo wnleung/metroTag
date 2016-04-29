@@ -95,7 +95,7 @@ h3 {
     margin-bottom: 10px;
 }
 
-.right-panel-button {
+.right-panel-button, #startbutton, #tagbutton {
     color: #344059;
     font-size: 15px;
     width: 180px;
@@ -135,15 +135,14 @@ h3 {
 #ThankYouNote {
     
     width: 400px;
-
     left: 250px;
     top: 250px;
     position: relative;
     font-size: 30px;
     font-weight: 500;
     font-family: "Avenir Next", sans-serif;
-   background-color: #F27272;
-    // background-color: white;
+    background-color: #F27272;
+   
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -154,6 +153,73 @@ h3 {
     display: none;
     
 }
+#intro {
+    
+    top: -55px;
+    position: relative;
+    width: 905px;
+    height: 600px;
+    margin-left: 10px;
+    text-align: center;
+    width: 905px;
+    background-image: url('map-sample.jpg');
+
+    
+}
+
+
+#onboard1, #onboard2 {
+    
+    top: 160px;
+    position: relative;
+    margin-top: 50px;
+    background-color: azure;
+    margin-top: 120px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    border: 3px solid;
+    border-color: dimgray;
+    border-radius: 8px;
+}
+#onboard2 {
+    top: 85px;
+    padding-bottom: 25px;
+    padding-top: 5px;
+    visibility: hidden;
+}
+
+   
+.intro-text, .step-text {
+    padding-top: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+ 
+    font-size: 20px;
+    font-family: "Avenir Next", sans-serif;
+    color: #344059;
+    text-align: left;
     
     
+    
+}
+
+
+.emp {
+    font-weight: 600;
+}
+
+#startbutton, #tagbutton {
+    
+    color: #344059;
+    font-size: 18px;
+    background-color: #F27272;
+    padding-top:8px;
+    padding-bottom: 38px;
+   
+    
+}
+
+
 
