@@ -8,9 +8,21 @@ function Tag(text, comment, x, y) {
     this.y = y;
 }
 
-// wait for our page to load
-$(document).ready(function() {
+function onboard(){
+    
+    $("#onboard1").css('display', 'none');
+    $("video").prop('muted', true); //mute
+    $("#onboard2").css('visibility', 'visible');
+}
 
+// wait for our page to load
+//$(document).ready(function() {
+function startTag() {
+    
+    //remove the onboarding screens
+    $("#onboard2").css('display', 'none');
+    $("#intro").css('display', 'none');
+    
     // initialize the canvas
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
@@ -376,5 +388,5 @@ $(document).ready(function() {
         // are considered equivalent
         return true;
     }
-
-});
+} //end of startTag function
+//});
